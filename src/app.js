@@ -11,7 +11,7 @@ function refreshWeather(response) {
   let iconElement = document.querySelector("#icon");
 
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon"/>`;
-
+getForecast(response.data.city);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
   temperatureElement.innerHTML = Math.round(temperature);
@@ -57,11 +57,19 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function getForecast (city) {
+let apiKey = "43008a6ae95edac1643c1odtb4f58d13";
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+axios(apiUrl).then(displayForecast); 
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 searchCity("Prague");
 
-function displayForecast () {
+
+function displayForecast (response) {
+  console.log(response.data); 
 let forecastElement = document.querySelector("#forecast");
 let days =["Tue","Wed","Thu","Fri","Sat"];
 let forecastHtml =""; 
@@ -81,5 +89,5 @@ forecastHtml = forecastHtml+`
 }); 
 forecastElement.innerHTML=forecastHtml; 
 }
-displayForecast (); 
+
 
