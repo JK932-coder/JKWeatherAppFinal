@@ -77,10 +77,10 @@ let forecastElement = document.querySelector("#forecast");
 
 let forecastHtml =""; 
 response.data.daily.forEach (function(day, index) {
-  if (index<5) {
-forecastHtml =
-  forecastHtml +
-  `
+  if (index > 0 && index < 6) {
+    forecastHtml =
+      forecastHtml +
+      `
     <div class="weather-forecast-day">
       <div class="weather-forecast-date">${formatDay(day.time)}</div>
       <div>
@@ -95,9 +95,7 @@ forecastHtml =
         )}°</div>
       </div>
     </div>
-`; 
-}}); 
+`;
+  }}); 
 forecastElement.innerHTML=forecastHtml; 
 }
-
-
