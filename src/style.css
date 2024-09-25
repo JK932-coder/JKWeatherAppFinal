@@ -1,5 +1,5 @@
 body {
-  background-color: #f9f7fe;
+  background-color: #c5b8e4;
   font-family: "Roboto", sans-serif;
 }
 a {
@@ -93,8 +93,10 @@ footer {
   margin-bottom: 10px;
 }
 .weather-forecast-icon {
-  font: 38px;
-  text-align: center;
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
 }
 .weather-forecast-temperatures {
   text-align: center;
